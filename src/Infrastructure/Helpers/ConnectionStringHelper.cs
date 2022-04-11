@@ -100,7 +100,12 @@
                 // - B2B users must specify their organization UPN in tenant name
                 // var homeTenant = CurrentAuthentication?.Account.GetTenantProfiles().SingleOrDefault((t) => t.IsHomeTenant);
                 var tenantName = "myorg";
-                var serverName = $"{ dataset.ServerName }/v1.0/{ tenantName }/{ dataset.WorkspaceName }";
+
+                var serverNameBuilder = new UriBuilder(dataset.ServerName)
+                {
+                    Path = $"/v1.0/{ tenantName }/{ dataset.WorkspaceName }"
+                };
+                var serverName = serverNameBuilder.Uri.AbsoluteUri;
                 var databaseName = dataset.ExternalDatabaseName;
                 var connectionString = Build(serverName, databaseName, accessToken);
 

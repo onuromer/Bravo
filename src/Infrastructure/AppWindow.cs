@@ -91,8 +91,8 @@
                 options = BravoOptions.CreateFromUserPreferences(),
                 culture = new
                 {
-                    IetfLanguageTag = CultureInfo.CurrentCulture.IetfLanguageTag,
-                    TwoLetterISOLanguageName = CultureInfo.CurrentCulture.TwoLetterISOLanguageName
+                    CultureInfo.CurrentCulture.IetfLanguageTag,
+                    CultureInfo.CurrentCulture.TwoLetterISOLanguageName
                 },
                 telemetry = new
                 {

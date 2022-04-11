@@ -5,6 +5,7 @@
     using Sqlbi.Bravo.Infrastructure.Extensions;
     using Sqlbi.Bravo.Infrastructure.Helpers;
     using Sqlbi.Bravo.Infrastructure.Models;
+    using Sqlbi.Bravo.Infrastructure.Models.PBICloud;
     using Sqlbi.Bravo.Infrastructure.Services.PowerBI;
     using System;
     using System.Diagnostics;
@@ -124,7 +125,7 @@
             return hash.ToHashCode();
         }
 
-        internal static PBICloudDataset CreateFrom(CloudWorkspace cloudWorkspace, CloudSharedModel cloudModel)
+        internal static PBICloudDataset CreateFrom(IPBICloudEnvironment environment, CloudWorkspace cloudWorkspace, CloudSharedModel cloudModel)
         {
             BravoUnexpectedException.ThrowIfNull(cloudWorkspace);
             BravoUnexpectedException.ThrowIfNull(cloudModel);
@@ -157,7 +158,7 @@
 
             if (cloudDataset.IsXmlaEndPointSupported)
             {
-                cloudDataset.ServerName = PBICloudService.PBIPremiumServerUri.OriginalString;
+                cloudDataset.ServerName = CommonHelper.ChangeUriScheme(environment.ClusterEndpoint, PBICloudService.PBIPremiumXmlaEndpointProtocolScheme);
                 cloudDataset.DatabaseName = model.DBName;
                 cloudDataset.ExternalDatabaseName = model.DisplayName;
             }
@@ -169,7 +170,7 @@
             }
             else
             {
-                cloudDataset.ServerName = PBICloudService.PBIDatasetServerUri.OriginalString;
+                cloudDataset.ServerName = CommonHelper.ChangeUriScheme(environment.ServiceEndpoint, PBICloudService.PBIDatasetProtocolScheme);
                 cloudDataset.DatabaseName = model.DBName;
                 cloudDataset.ExternalDatabaseName = $"{ model.VSName }-{ model.DBName }";
             } 

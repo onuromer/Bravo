@@ -3,17 +3,13 @@
     using Sqlbi.Bravo.Infrastructure.Configuration;
     using Sqlbi.Bravo.Infrastructure.Configuration.Settings;
     using Sqlbi.Bravo.Infrastructure.Helpers;
-    using Sqlbi.Bravo.Infrastructure.Messages;
     using Sqlbi.Bravo.Infrastructure.Windows;
     using Sqlbi.Bravo.Infrastructure.Windows.Interop;
-    using Sqlbi.Bravo.Models;
     using System;
-    using System.Runtime.InteropServices;
-    using System.Text.Json;
 
     internal class AppWindowSubclass : WindowSubclass, IDisposable
     {
-        private readonly PhotinoNET.PhotinoWindow _window;
+        //private readonly PhotinoNET.PhotinoWindow _window;
         private readonly IntPtr TRUE = new(1); // Message handled, do not call the next handler in the subclass chain
 
         /// <summary>
@@ -24,7 +20,7 @@
         private AppWindowSubclass(PhotinoNET.PhotinoWindow window)
             : base(hWnd: window.WindowHandle)
         {
-            _window = window;
+            //_window = window;
         }
 
         protected override IntPtr WndProc(IntPtr hWnd, uint uMsg, IntPtr wParam, IntPtr lParam, IntPtr uIdSubclass, IntPtr dwRefData)
