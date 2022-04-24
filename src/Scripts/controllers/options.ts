@@ -22,7 +22,6 @@ export interface Options {
 
 export interface ClientOptions {
     sidebarCollapsed: boolean
-    loggedInOnce: boolean
     locale: string
     formatting: ClientOptionsFormatting
     editor: ClientOptionsEditor
@@ -155,7 +154,6 @@ export class OptionsController extends OptionsStore<Options> {
         updateChannel: UpdateChannelType.Stable,
         customOptions: {
             sidebarCollapsed: false,
-            loggedInOnce: false,
             locale: CONFIG.culture.ietfLanguageTag, //navigator.language,
             formatting: {
                 preview: false,
