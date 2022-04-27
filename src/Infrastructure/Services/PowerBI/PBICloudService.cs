@@ -38,7 +38,7 @@
             PropertyNameCaseInsensitive = false, // required by SharedDatasetModel LastRefreshTime/lastRefreshTime properties
         };
 
-        public const string PBCommercialUri = "https://api.powerbi.com";
+        public const string PBICommercialUri = "https://api.powerbi.com";
         public const string PBIDatasetProtocolScheme = "pbiazure";
         public const string PBIPremiumXmlaEndpointProtocolScheme = "powerbi";
         //public const string PBIPremiumDedicatedProtocolScheme = "pbidedicated";

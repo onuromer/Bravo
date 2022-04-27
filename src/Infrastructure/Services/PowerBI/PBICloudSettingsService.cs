@@ -98,7 +98,7 @@
             // Uri strings from endpoint query > globalservice/v202003/environments/discover?client=powerbi-msolap
             string[] TrustedDiscoverUriString = new[]
             {
-                PBICloudService.PBCommercialUri,                               // PBICloudEnvironmentType.Public
+                PBICloudService.PBICommercialUri,                              // PBICloudEnvironmentType.Public
                 "https://api.powerbi.cn",                                      // PBICloudEnvironmentType.China
                 "https://api.powerbi.de",                                      // PBICloudEnvironmentType.Germany
                 "https://api.powerbigov.us",                                   // PBICloudEnvironmentType.USGov
@@ -126,7 +126,7 @@
             }
             else
             {
-                uriString = PBICloudService.PBCommercialUri;
+                uriString = PBICloudService.PBICommercialUri;
             }
 
             if (AppEnvironment.IsDiagnosticLevelVerbose)
